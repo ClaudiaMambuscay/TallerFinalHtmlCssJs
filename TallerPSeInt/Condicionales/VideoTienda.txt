@@ -1,0 +1,63 @@
+Proceso VideoTienda
+	// Punto 4
+	Definir NombreUsuario, NombrePeli, EstadoPeli Como Caracter;
+	definir opcion, peli, estado como entero;// 1. si 2. No 3. dano
+	
+
+	Escribir "Escoja una opcion: ";
+	Escribir "1. Alquilar pelicula";
+	Escribir "2. Recibir pelicula";
+	
+	Leer opcion;
+	
+	Segun  opcion	hacer	
+		1: 
+			Escribir "Las peliculas disponibles son: ";
+			
+			Escribir "1. Piratas del caribe";
+			Escribir "2. Animales fantasticos";
+			Escribir "3. Mas alla de la luna";
+			Escribir "4. Monstruos del mar";
+			Escribir "5. Dog un viaje salvaje";
+			
+			leer peli;
+			
+			Escribir "Nombre del usuario";
+			leer NombreUsuario;
+			
+			segun peli hacer
+				1: 
+					Escribir NombreUsuario," Alquilo la pelicula Piratas del carible";
+				2: 
+					Escribir NombreUsuario," Alquilo la pelicula Animales fantasticos";
+				3: 
+					Escribir NombreUsuario," Alquilo la pelicula Mas alla de la luna";
+				4:
+					Escribir NombreUsuario," Alquilo la pelicula Monstruos del mar";
+				5: 
+					Escribir NombreUsuario," Alquilo la pelicula Dog un viaje salvaje";
+				De Otro Modo:
+					Escribir "La opcion no existe";
+			FinSegun
+		
+		2:
+			Escribir "Ingrese el nombre de la pelicula";
+			Leer NombrePeli;
+			
+			Escribir "1. Pelicula en buen estado";
+			Escribir "2. Pelicula en mal estado";
+			Leer estado;
+			si estado = 2 entonces 
+				Escribir "Ingrese el nombre del usuario";
+				Leer NombreUsuario;
+				Escribir "Por favor mencione cual es el estado en que llego la pelicula";
+				Leer EstadoPeli;
+				Escribir "La pelicula", NombrePeli, " presenta las siguientes observaciones: ", EstadoPeli," Por lo tanto se le combra al Usuario ", NombreUsuario," el 10% del alquiler de la pelicula";
+			SiNo
+				Escribir "Gracias por entregar la pelicula en buen estado";
+			FinSi
+		De Otro Modo:
+			Escribir "La opcion es invalida";
+	FinSegun
+	
+FinProceso

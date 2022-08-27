@@ -1,0 +1,95 @@
+Proceso banco
+	//El banco "Su banco fiel" es un banco que inicia sus actividades financieras y necesita una aplicación para llevar las cuentas de sus usuarios; 
+	//por lo tanto, se sugiere que la cuenta tenga los atributos titular y cantidad. Para cada cliente las cuentas permitirán realizar ingresos, 
+	//retiros o consultas de valor. En los ingresos no se pueden insertar valores negativos y 
+	//para los retiros el valor no puede ser mayor al valor que tiene en la cuenta.
+	
+	definir cuenta, titular, registro Como Caracter;
+	definir ingresos, retiros, total,k, j, opcion Como Entero;
+	
+	dimension registro[3,4];// [Numero de personas, opciones] opciones->Nombre, ingresos, retiros, total
+	Escribir"Seleccione 1. para INICIAR y 0 para Finalizar";
+	leer k;
+	Mientras k=1 Hacer
+	Escribir "Ingrese la operacion a realizar";
+	Escribir"1. Registrar Nuevo titular";
+	Escribir"2. Depositar";
+	Escribir"3. Retirar";
+	Escribir"4.Consultar";
+	Leer opcion;
+	retiros<-0;
+		si opcion=1 Entonces
+			Escribir "Ingrese Nombre y Apellidos del Nuevo Titular";
+			Leer titular;
+			Escribir "Ingrese cuanto desea depositar en la Nueva cuenta";
+			Leer ingresos;
+			si ingresos >1 Entonces
+				total<-ingresos;
+				Escribir"El Titular: ",titular," ingreso $",ingresos,"Satisfactoriamente";
+				registro[0,0]<-titular;
+				registro[0,1]<-ConvertirATexto(ingresos);
+				registro[0,2]<-ConvertirATexto(retiros);
+				registro[0,3]<-ConvertirATexto(total);
+			SiNo
+				Escribir"Los ingresos no pueden ser negativos";
+			FinSi
+		FinSi
+		total<-ingresos;
+		
+		si opcion=2 Entonces
+			Escribir "Ingrese Nombre del Titular";
+			Leer titular;
+			Escribir "Ingrese cuanto desea depositar";
+			Leer ingresos;
+			si ingresos >1 Entonces
+				total<-ingresos+total;
+				Escribir"El Titular: ",titular," ingreso $",ingresos,"Satisfactoriamente";
+				registro[1,0]<-titular;
+				registro[1,1]<-ConvertirATexto(ingresos);
+				registro[1,2]<-ConvertirATexto(retiros);
+				registro[1,3]<-ConvertirATexto(total);
+			SiNo
+				Escribir"Los ingresos no pueden ser negativos";
+			FinSi
+		FinSi
+		
+		si opcion=3 Entonces
+			Escribir "Ingrese Nombre del Titular";
+			Leer titular;
+			Escribir "Ingrese cuanto desea Retirar";
+			Leer retiros;
+			si retiros<ingresos Entonces
+				total<-ingresos-retiros;
+				registro[2,0]<-titular;
+				registro[2,1]<-ConvertirATexto(ingresos);
+				registro[2,2]<-ConvertirATexto(retiros);
+				registro[2,3]<-ConvertirATexto(total);
+			FinSi
+			
+			Escribir"El Titular: ",titular," ingreso $",ingresos,"Satisfactoriamente";
+		FinSi
+		
+		si opcion=4 Entonces
+			Escribir "Ingrese Nombre del Titular";
+			Leer titular;
+			
+			j<-1;
+			para j<-1 hasta 3 Hacer
+				si registro[j-1,0]=titular Entonces
+					Escribir "El Titular: ",titular," tiene: ", registro[j-1,3];
+					Escribir "Ingresos ", registro[j-1,1];
+					Escribir "Retiros ",registro[j-1,2];
+				FinSi
+			FinPara
+		SiNo
+			Escribir"Opcion invalida";
+		FinSi
+	
+		
+	FinMientras
+	
+	
+	
+	
+	
+FinProceso

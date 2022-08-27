@@ -1,0 +1,21 @@
+Proceso Ciclos_2
+	Definir f,c,a,n Como Entero;
+	n<-10;
+	f<-1; c<-0;
+	Mientras f>0 y f<=n Hacer
+		c<-n-f;
+		
+		mientras c>0 y c<=n Hacer //coloca espacios de mayor a menor
+			escribir sin saltar' ';
+			c<-c-1;
+		FinMientras
+		a<-1;
+		mientras a>=1 y a<=f Hacer//coloca * de menor a mayor
+			escribir Sin Saltar'*';
+			a<-a+1;
+		FinMientras
+		escribir ''; // pasa a la siguiente fila
+		f<-f+1;
+		
+	FinMientras
+FinProceso

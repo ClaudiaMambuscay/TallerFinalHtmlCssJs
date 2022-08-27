@@ -1,0 +1,52 @@
+Proceso Matriz_1
+	definir num, f, c Como Entero;
+	definir m,a Como Caracter;
+	
+	Dimension m[4,5];
+	Dimension a[2,5];
+	num<-0;
+	
+	Escribir 'Matriz inicial';
+	para f<-0 Hasta 3 Con Paso 1 Hacer
+		para c<-0 Hasta 4 con paso 1 Hacer
+			si num<10 Entonces
+				num<-num+1;
+				m[f,c]<-concatenar('0',ConvertirATexto(num));
+				
+			FinSi
+			
+			si num>=10 Entonces
+				m[f,c]<-ConvertirATexto(num);
+				num<-num+1;
+			FinSi
+			Escribir m[f,c] ,' ',Sin Saltar;
+			
+		FinPara
+		
+		escribir ' ';
+	FinPara
+	
+	Para f<-0 hasta 3 Con Paso 1 Hacer
+		para c<-0 Hasta 4 con paso 1 Hacer
+			si f=1 o f=3 Entonces
+				a[0,c]<-m[1,4-c];
+				a[1,c]<-m[3,4-c];
+				//Escribir a[0,c] sin saltar;
+			FinSi
+			
+		FinPara
+		//escribir ' ';
+	FinPara
+	escribir ' ';
+	Escribir 'Matriz final';
+	Para f<-0 hasta 3 Con Paso 1 Hacer
+		para c<-0 Hasta 4 con paso 1 Hacer
+			m[1,c]<-a[0,c];
+			m[3,c]<-a[1,c];
+			Escribir m[f,c] ,' ',Sin Saltar;
+			
+		FinPara
+		escribir ' ';
+	FinPara
+	
+FinProceso

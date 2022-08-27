@@ -1,0 +1,52 @@
+Proceso Ciclo_8
+	definir nombre, nota, registro Como Caracter;
+	definir opcion, count Como Entero;
+	
+	dimension registro[8,2];
+	Repetir
+		escribir 'Ingrese una opcion';
+		Escribir '1. Registrar Usuario';
+		Escribir '2. Ingresar notas del curso';
+		Escribir '3. Resultados del curso';
+		Escribir '4. Salir de la APP';
+		
+		Leer opcion;
+		
+		si opcion =1 Entonces
+			Para count<-1 Hasta 8 Con Paso 1 Hacer
+				Escribir 'Cupos disponibles:',8-(count-1);
+				Escribir 'Ingrese Nombre y Apellido del usuario';
+				Leer nombre;				
+				registro[count-1,0]<-nombre;
+				registro[count-1,1]<-' ';
+		
+				escribir 'El usuario ', nombre,' se ha registrado correctamente';
+			FinPara
+		FinSi
+		
+		si opcion=2 Entonces
+			
+			Para count<-1 Hasta 8 Con Paso 1 Hacer
+				Escribir 'Ingrese Nombre y Apellido del usuario';
+				leer nombre;
+				si nombre=registro[count-1,0] Entonces
+					Escribir'Ingrese la nota del estudiante ',nombre;
+					Escribir 'A: Aprobado o R: Reprobado';
+					leer nota;
+					registro[count-1,1]<-nota;
+					Escribir 'La nota del usuario ',registro[count-1,0] , ' es: ', registro[count-1,1] ;
+				FinSi
+				
+			FinPara
+		FinSi
+		
+		si opcion=3 Entonces
+			Escribir 'los resultados del curso son:';
+			
+			Para count<-1 Hasta 8 Con Paso 1 Hacer
+				Escribir'Usuario: ',registro[count-1,0],' Nota: ',registro[count-1,1];
+			FinPara
+		FinSi
+		
+	Hasta Que opcion=4
+FinProceso

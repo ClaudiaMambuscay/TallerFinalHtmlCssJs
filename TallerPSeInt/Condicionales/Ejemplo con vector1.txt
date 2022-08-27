@@ -1,0 +1,29 @@
+Proceso sin_titulo
+	Definir P, C , peli como caracter;
+	definir i Como Entero;
+	Dimension P[2], C[2];
+	P[0]<-"bu"; C[0]<-" ";
+	P[1]<-"tu"; C[1]<-" ";
+	Escribir "Ingrese el nombre de la pelicula";
+	Leer peli;
+	
+	Escribir"las peliculas alquiladas fueron: ";
+	para i<-0 hasta 1 con paso 1 Hacer
+		si P[i]= peli Entonces
+			Escribir peli," pelicula alquilada";
+			C[i]<- "No disponible";
+		SiNo
+			P[i]<-P[i];
+		FinSi
+		
+	FinPara
+	
+	para i<-0 hasta 1 con paso 1 Hacer
+		si C[i]="No disponible" entonces
+			Escribir "Las peliculas alquiladas fueron:",P[i];
+		SiNo
+			Escribir "Las peliculas disponibles son:", P[i];
+		finsi
+	FinPara
+	
+FinProceso

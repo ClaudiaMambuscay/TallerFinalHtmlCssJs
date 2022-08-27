@@ -1,0 +1,634 @@
+
+SubProceso Banco (  )
+	definir cuenta, titular, registro Como Caracter;
+	definir ingresos, retiros, total, j, opcion Como Entero;
+
+	dimension registro[3,4];// [Numero de personas, opciones] opciones->Nombre, ingresos, retiros, total
+	
+	Repetir
+		Escribir "Ingrese la operacion a realizar";
+		Escribir "1. Registrar Nuevo titular";
+		Escribir "2. Depositar";
+		Escribir "3. Retirar";
+		Escribir "4. Consultar";
+		Escribir "5. Salir de la APP";
+		Leer opcion;
+		retiros<-0;
+		ingresos<-0;
+		total<-0;
+		si opcion=1 Entonces
+			Escribir "Ingrese Nombre y Apellidos del Nuevo Titular";
+			Leer titular;
+			Escribir "Ingrese cuanto desea depositar en la Nueva cuenta";
+			Leer ingresos;
+			si ingresos >1 Entonces
+				total<-ingresos;
+				Escribir"El Titular: ",titular," ingreso $",ingresos,"Satisfactoriamente";
+				registro[0,0]<-titular;
+				registro[0,1]<-ConvertirATexto(ingresos);
+				registro[0,2]<-ConvertirATexto(retiros);
+				registro[0,3]<-ConvertirATexto(total);
+			SiNo
+				Escribir"Los ingresos no pueden ser negativos";
+			FinSi
+		FinSi
+		total<-ingresos;
+		
+		si opcion=2 Entonces
+			Escribir "Ingrese Nombre del Titular";
+			Leer titular;
+			Escribir "Ingrese cuanto desea depositar";
+			Leer ingresos;
+			si ingresos >1 Entonces
+				total<-ingresos+total;
+				Escribir"El Titular: ",titular," ingreso $",ingresos,"Satisfactoriamente";
+				registro[1,0]<-titular;
+				registro[1,1]<-ConvertirATexto(ingresos);
+				registro[1,2]<-ConvertirATexto(retiros);
+				registro[1,3]<-ConvertirATexto(total);
+			SiNo
+				Escribir"Los ingresos no pueden ser negativos";
+			FinSi
+		FinSi
+		
+		si opcion=3 Entonces
+			Escribir "Ingrese Nombre del Titular";
+			Leer titular;
+			Escribir "Ingrese cuanto desea Retirar";
+			Leer retiros;
+			si retiros<ingresos Entonces
+				total<-ingresos-retiros;
+				registro[2,0]<-titular;
+				registro[2,1]<-ConvertirATexto(ingresos);
+				registro[2,2]<-ConvertirATexto(retiros);
+				registro[2,3]<-ConvertirATexto(total);
+			FinSi
+			
+			Escribir"El Titular: ",titular," ingreso $",ingresos,"Satisfactoriamente";
+		FinSi
+		
+		si opcion=4 Entonces
+			Escribir "Ingrese Nombre del Titular";
+			Leer titular;
+			
+			j<-1;
+			para j<-1 hasta 3 Hacer
+				si registro[j-1,0]=titular Entonces
+					Escribir "El Titular: ",titular," tiene: ", registro[j-1,3];
+					Escribir "Ingresos ", registro[j-1,1];
+					Escribir "Retiros ",registro[j-1,2];
+				FinSi
+			FinPara
+		
+		FinSi
+		
+		
+	Hasta Que opcion=5
+		
+FinSubProceso
+
+SubProceso  Drogueria (  )
+	
+	Definir Producto, cliente Como Caracter;
+	Definir opcion, precio, devolucion, M, cantidad Como Entero;
+	
+	Escribir "Ingrese la opcion";
+	Escribir "1. Consultar productos";
+	Escribir "2. Devolucion";
+	Leer opcion;
+	
+	Segun opcion hacer
+		1:
+			Escribir "Los Medicamentos disponibles son: ";
+		    Escribir " 1. Acetaminofen 250mg x10 -> $1.000";
+			Escribir " 2. Naproxeno 250mg x10 -> $3.000";
+			Escribir " 3. Dolex forte  x5 -> $5.000";
+			Escribir " 4. Noxpirin x4 -> $5.200";
+			Leer M;
+			Escribir "Ingrese la cantidad del medicamento seleccionado";
+			Leer cantidad;
+			segun M hacer
+				1: 
+					precio<-cantidad*1000;
+					Escribir "El valor a pagar es", precio;
+				2:
+					precio<-cantidad*3000;
+					Escribir "El valor a pagar es", precio;
+				3:
+					precio<-cantidad*5000;
+					Escribir "El valor a pagar es", precio;
+				4:
+					precio<-cantidad*5200;
+					Escribir "El valor a pagar es", precio;
+				De Otro Modo:
+					Escribir "La opcion no existe";
+			FinSegun
+		2: 
+			Escribir "La devolucion solo se realiza para medicamento equivocado sin destapar";
+		De Otro Modo:
+			Escribir "La opcion no existe";
+			
+	FinSegun
+FinSubProceso
+
+SubProceso Maquinista (  )
+	Definir nombre, tipo, fecha, observacionCliente, registroNovedad Como Caracter;
+	Definir opcion, opcion2, opcion3 Como Entero;
+	
+	Escribir "Ingrese el nombre del cliente";
+	Leer nombre;
+	Escribir "Ingrese el tipo de motocicleta y la fecha DD/MM/AAAA";
+	Leer tipo, fecha;
+	Escribir "Observaciones del cliente";
+	Leer observacionCliente;
+	
+	Escribir "Seleccione una opcion";
+	Escribir "1. Cambio de aceite";
+	Escribir "2. Revision mecanica general";
+	Leer opcion;
+	
+	segun opcion hacer
+		1:
+			Escribir "Se presenta novedad en el cambio de aceite, si=1, No=0";
+			Leer opcion2;
+			si opcion2 = 1 Entonces
+				Escribir "Ingrese la novedad"	;
+				Leer registroNovedad;
+				Escribir "El cambio de aceite fue exitoso para la motocicleta ",tipo," ingresada el dia ", fecha, " perteneciente al usuario ", nombre,"la cual presento como novedad " , registroNovedad;
+			SiNo
+				Escribir "El cambio de aceite fue exitoso para la motocicleta ",tipo," ingresada el dia ", fecha, " perteneciente al usuario ", nombre;
+			FinSi
+			
+		2: 
+			Escribir "Reporte Valoracion General";
+			Escribir "1. Desgaste en frenos";
+			Escribir "2. Cambio de pintura";
+			Escribir "3. Cambio de luces";
+			Leer opcion2;
+			
+			segun opcion2 hacer
+				1: 
+					Escribir "Se presenta novedad en los frenos, si=1, No=0";
+					Leer opcion3;
+					si opcion2 = 1 Entonces
+						Escribir "Ingrese la novedad"	;
+						Leer registroNovedad;
+						Escribir "El cambio de frenos fue exitoso para la motocicleta ",tipo," ingresada el dia ", fecha, " perteneciente al usuario ", nombre,"la cual presento como novedad " , registroNovedad;
+					SiNo
+						Escribir "El cambio de frenos fue exitoso para la motocicleta ",tipo," ingresada el dia ", fecha, " perteneciente al usuario ", nombre;
+					FinSi
+					
+				2: 
+					Escribir "Se presenta novedad en la pintura, si=1, No=0";
+					Leer opcion3;
+					si opcion2 = 1 Entonces
+						Escribir "Ingrese la novedad"	;
+						Leer registroNovedad;
+						Escribir "El cambio de pintura fue exitoso para la motocicleta ",tipo," ingresada el dia ", fecha, " perteneciente al usuario ", nombre,"la cual presento como novedad " , registroNovedad;
+					SiNo
+						Escribir "El cambio de pintura fue exitoso para la motocicleta ",tipo," ingresada el dia ", fecha, " perteneciente al usuario ", nombre;
+					FinSi
+					
+				3:
+					Escribir "Se presenta novedad en las luces, si=1, No=0";
+					Leer opcion3;
+					si opcion2 = 1 Entonces
+						Escribir "Ingrese la novedad"	;
+						Leer registroNovedad;
+						Escribir "El cambio de luces fue exitoso para la motocicleta ",tipo," ingresada el dia ", fecha, " perteneciente al usuario ", nombre,"la cual presento como novedad " , registroNovedad;
+					SiNo
+						Escribir "El cambio de luces fue exitoso para la motocicleta ",tipo," ingresada el dia ", fecha, " perteneciente al usuario ", nombre;
+					FinSi
+				De Otro Modo:
+					Escribir "La opcion es invalida";
+			FinSegun
+		De Otro Modo:
+			Escribir "La opcion es invalida";
+	FinSegun
+FinSubProceso
+
+SubProceso Fiesta (  )
+	
+	// Puntos 1, 2  y 3
+	Definir edad Como Entero;
+	
+	Escribir "Ingrese su edad";
+	Leer edad;
+	
+	si edad >= 18 Entonces
+		Escribir "Usted es mayor de edad";
+	SiNo
+		Escribir "Usted aun es un niñ@";
+	FinSi
+	
+	Limpiar Pantalla;
+	
+	Definir nombre Como Caracter;
+	Definir SuEdad Como Entero;
+	
+	Escribir "Ingrese su Nombre Completo';
+	Leer nombre;
+	Escribir "Ingrese su edad";
+	Leer SuEdad;
+	
+	si SuEdad >= 18 Entonces
+		Escribir nombre," Usted es MAYOR de edad, por lo tanto puede entrar a la fiesta";
+	SiNo
+		Escribir nombre, "Usted es MENOR de edad, por lo tanto NO puede entrar a la fiesta, por favor devuelvase a su casa";
+	FinSi
+	
+FinSubProceso
+
+SubProceso Pasteleria (  )
+	Definir nombre, sabor, decoracion, registro, porciones, disponible como caracter;
+	Definir cantidad, opcion, precio, j,k como entero;
+	Definir V1, V2, G1,G2 como entero;
+	V1 <-3; V2 <-3; 
+	G1 <-3; G2 <-3; 
+	
+	Escribir"Seleccione 1. para INICIAR y 0 para Finalizar";
+	leer k;
+	Dimension registro[3,5];
+	j<-0;
+	Mientras k=1 Hacer
+		
+		Escribir "Seleccione una opcion";
+		Escribir "1. Producto nuevo";
+		Escribir "2. Producto disponible";
+		Escribir "3. Ventas del dia";
+		Leer opcion;
+		
+		
+		si opcion=1 Entonces
+			Escribir "Ingrese el nombre del cliente";
+			Leer nombre;
+			Escribir "Ingrese las caracteristicas de la torta";
+			Escribir "Sabor: Vainilla, Naranja, Chocolate, Genovesa, Envinada ";
+			Leer sabor;
+			Escribir "Porciones en libras: 0.5, 1 o 2 ";
+			Leer porciones;
+			Escribir "Decoracion";
+			Leer decoracion;
+			Escribir "Ingrese la cantidad";
+			Leer cantidad;
+			
+			si sabor='Vainilla' o sabor='vainilla'o sabor= 'Naranja'o sabor= 'naranja' o sabor= 'Chocolate' o sabor= 'chocolate' entonces
+				si porciones='0.5' Entonces
+					precio<-15000*cantidad;
+					registro[j,0]<-nombre;
+					registro[j,1]<-sabor;
+					registro[j,2]<-porciones;
+					registro[j,3]<-ConvertirATexto(cantidad);
+					registro[j,4]<-ConvertirATexto(precio);
+					Escribir "La torta de sabor ", sabor," de ", porciones, " con decoracion ", decoracion, " cuesta $", precio;
+					j<-j+1;
+					Escribir j;
+				FinSi
+				si porciones='1' Entonces
+					precio<-25000*cantidad;
+					registro[j,0]<-nombre;
+					registro[j,1]<-sabor;
+					registro[j,2]<-porciones;
+					registro[j,3]<-ConvertirATexto(cantidad);
+					registro[j,4]<-ConvertirATexto(precio);
+					Escribir "La torta de sabor ", sabor," de ", porciones, " con decoracion ", decoracion, " cuesta $", precio;
+					j<-j+1;
+					Escribir j;
+				FinSi
+				si porciones='2' Entonces
+					precio<-35000*cantidad;
+					registro[j,0]<-nombre;
+					registro[j,1]<-sabor;
+					registro[j,2]<-porciones;
+					registro[j,3]<-ConvertirATexto(cantidad);
+					registro[j,4]<-ConvertirATexto(precio);
+					Escribir "La torta de sabor ", sabor," de ", porciones, " con decoracion ", decoracion, " cuesta $", precio;
+					j<-j+1;
+					Escribir j;
+				FinSi
+			FinSi
+			si sabor='Genovesa'o sabor='genovesa' o sabor='Envinada'o sabor='envinada' entonces
+				si porciones='0.5' Entonces
+					precio<-25000*cantidad;
+					registro[j,0]<-nombre;
+					registro[j,1]<-sabor;
+					registro[j,2]<-porciones;
+					registro[j,3]<-ConvertirATexto(cantidad);
+					registro[j,4]<-ConvertirATexto(precio);
+					Escribir "La torta de sabor ", sabor," de ", porciones, " con decoracion ", decoracion, " cuesta $", precio;
+					j<-j+1;
+					Escribir j;
+				FinSi
+				si porciones='1' Entonces
+					precio<-40000*cantidad;
+					registro[j,0]<-nombre;
+					registro[j,1]<-sabor;
+					registro[j,2]<-porciones;
+					registro[j,3]<-ConvertirATexto(cantidad);
+					registro[j,4]<-ConvertirATexto(precio);
+					Escribir "La torta de sabor ", sabor," de ", porciones, " con decoracion ", decoracion, " cuesta $", precio;
+					j<-j+1;
+					Escribir j;
+				FinSi
+				si porciones='2' Entonces
+					precio<-50000*cantidad;
+					registro[j,0]<-nombre;
+					registro[j,1]<-sabor;
+					registro[j,2]<-porciones;
+					registro[j,3]<-ConvertirATexto(cantidad);
+					registro[j,4]<-ConvertirATexto(precio);
+					Escribir "La torta de sabor ", sabor," de ", porciones, " con decoracion ", decoracion, " cuesta $", precio;
+					j<-j+1;
+					Escribir j;
+				FinSi
+				
+			FinSi
+		FinSi
+		
+		si opcion =2 Entonces
+			
+			Escribir "Ingrese el nombre del cliente";
+			Leer nombre;
+			
+			Escribir "Las tortas disponibles son:";
+			Escribir " Vainilla 0.5 L: ",V1," 1L: ",V2;
+			Escribir " Genovesa 0.5 L: ",G1," 1L: ",G2;
+			Escribir"Ingrese el sabor, porcion y cantidad";
+			Leer sabor, porciones, cantidad;
+			
+			si sabor='Vainilla' o sabor='vainilla' entonces
+				si porciones='0.5'y cantidad<=V1 Entonces
+					precio<-15000*cantidad;
+					registro[j,0]<-nombre;
+					registro[j,1]<-sabor;
+					registro[j,2]<-porciones;
+					registro[j,3]<-ConvertirATexto(cantidad);
+					registro[j,4]<-ConvertirATexto(precio);
+					Escribir "La torta de sabor ", sabor," de ", porciones, " y cantidad:", cantidad, " cuesta $", precio;
+					j<-j+1;
+					V1<-V1-1;
+					Escribir j," ", V1;
+				FinSi
+				si porciones='1'y cantidad<=V2 Entonces
+					precio<-25000*cantidad;
+					registro[j,0]<-nombre;
+					registro[j,1]<-sabor;
+					registro[j,2]<-porciones;
+					registro[j,3]<-ConvertirATexto(cantidad);
+					registro[j,4]<-ConvertirATexto(precio);
+					Escribir "La torta de sabor ", sabor," de ", porciones, " y cantidad:", cantidad,  " cuesta $", precio;
+					j<-j+1;
+					V2<-V2-1;
+					Escribir j," ", V2;
+				FinSi
+				
+				
+			FinSi
+			si sabor='Genovesa' o sabor='genovesa' entonces
+				si porciones='0.5' y cantidad<=G1 Entonces
+					precio<-25000*cantidad;
+					registro[j,0]<-nombre;
+					registro[j,1]<-sabor;
+					registro[j,2]<-porciones;
+					registro[j,3]<-ConvertirATexto(cantidad);
+					registro[j,4]<-ConvertirATexto(precio);
+					Escribir "La torta de sabor ", sabor," de ", porciones, " y cantidad:", cantidad,  " cuesta $", precio;
+					j<-j+1;
+					G1<-G1-1;
+					Escribir j," ", G1;
+				SiNo
+					Escribir "No hay tortas disponibles";
+				FinSi
+				si porciones='1'y cantidad<=G2 Entonces
+					precio<-40000*cantidad;
+					registro[j,0]<-nombre;
+					registro[j,1]<-sabor;
+					registro[j,2]<-porciones;
+					registro[j,3]<-ConvertirATexto(cantidad);
+					registro[j,4]<-ConvertirATexto(precio);
+					Escribir "La torta de sabor ", sabor," de ", porciones," y cantidad:", cantidad,  " cuesta $", precio;
+					j<-j+1;
+					G2<-G2-1;
+					Escribir j," ", G2;
+				SiNo
+					Escribir "No hay tortas disponibles";
+				FinSi
+				
+				
+			FinSi
+		FinSi
+		
+		si opcion=3 Entonces
+			si j<3 Entonces
+				registro[j,0]<-"";
+				registro[j,1]<-"";
+				registro[j,2]<-"";
+				registro[j,3]<-"";
+				registro[j,4]<-"";
+				j<-j+1;
+				
+			SiNo
+				
+				Escribir "Resultados:";
+				Escribir "Nombre:	Sabor:	Porciones:	Cantidad:	Precio:";
+				para j<-1 Hasta 3 Hacer
+					Escribir registro[j-1,0],' ', registro[j-1,1],' ', registro[j-1,2],' ', registro[j-1,3],' ', registro[j-1,4];
+				FinPara
+			FinSi
+			
+		SiNo
+			Escribir"Opcion incorrecta";
+			
+		FinSi
+		
+	FinMientras
+FinSubProceso
+
+SubProceso  Geometria (  )
+	definir AreaRectangulo, AreaTriangulo, AreaTrapecio, L, B, H como real;
+	definir opcion1 como entero;
+	
+	Escribir "Calculo Area: Seleccione La figura geometrica";
+	Escribir"1.Rectangulo";
+	Escribir"2.Triangulo";
+	Escribir"3.Trapecio";
+	Leer opcion1;
+	
+	Segun opcion1 Hacer
+		1:
+			Escribir"Ingrese la longitud del ALTURA en cm";
+			leer H;
+			Escribir "Ingrese la longitud de la BASE en cm";
+			Leer B;
+			AreaRectangulo<-(B*H);
+			Escribir"El area del Rectangulo con base (cm): ", B," y altura (cm): ",H," es: ", AreaRectangulo, "(cm)^2";
+		2:
+			Escribir"Ingrese la longitud del ALTURA en cm";
+			leer H;
+			Escribir "Ingrese la longitud de la BASE en cm";
+			Leer B;
+			AreaTriangulo<-((B*H)/2);
+			Escribir"El area del Triangulo con base (cm): ", B," y altura (cm): ",H," es: ", AreaTriangulo, "(cm)^2";
+		3:
+			Escribir"Ingrese la longitud del ALTURA en cm";
+			leer H;
+			Escribir "Ingrese la longitud de la BASE MAYOR en cm";
+			Leer B;
+			Escribir "Ingrese la longitud de la BASE MENOR en cm";
+			Leer L;
+			AreaTrapecio<-((B+L)/2)*H;
+			Escribir"El area del Trapecio con base mayor (cm): ", B,", base menor (cm): ",L," y altura (cm): ",H," es: ", AreaTrapecio, "(cm)^2";
+			
+		De Otro Modo:
+			Escribir "La opcion NO es Valida";
+	FinSegun
+FinSubProceso
+SubProceso  IMC_Salud (  )
+	definir personas, nombre como caracter;
+	definir j, k Como Entero;
+	definir Kg, m, imc como real;
+	
+	Dimension personas[3,5];
+	Para j<-1 Hasta k Con Paso 1 Hacer
+		
+		Escribir "Ingrese el nombre de la persona",j;
+		leer nombre;
+		personas[j-1,0]<-nombre;
+		Escribir "Ingrese el peso en Kg y la estatura en m de la persona",j;
+		leer personas[j-1,1], personas[j-1,2];		
+		
+		Kg<-ConvertirAnumero(personas[j-1,1]);
+		m<-ConvertirANumero(personas[j-1,2]);
+		imc<- Kg/(m*m);
+		
+		si imc<18.5 Entonces
+			personas[j-1,3]<-ConvertirATexto(imc);
+			personas[j-1,4]<- "Bajo Peso";
+		FinSi
+		si imc=18.5 o imc<24.9 Entonces
+			personas[j-1,3]<-ConvertirATexto(imc);
+			personas[j-1,4]<- "Normal";
+		FinSi
+		si imc=24.9 o imc<29.9 Entonces
+			personas[j-1,3]<-ConvertirATexto(imc);
+			personas[j-1,4]<- "Sobrepeso";
+		SiNo		
+			personas[j-1,3]<-ConvertirATexto(imc);
+			personas[j-1,4]<- "Obeso";
+		FinSi
+	FinPara
+	
+	para j<-1 Hasta 3 Hacer
+		Escribir "Resultados:";
+		Escribir "Nombre:	Peso:	Estatura:	IMC:	Rango:";
+		Escribir personas[j-1,0],' ', personas[j-1,1],' ', personas[j-1,2],' ', personas[j-1,3],' ', personas[j-1,4];
+	FinPara
+FinSubProceso
+
+SubProceso VideoTienda (  )
+	Definir NombreUsuario, NombrePeli, EstadoPeli Como Caracter;
+	definir opcion, peli, estado como entero;// 1. si 2. No 3. dano
+	
+	
+	Escribir "Escoja una opcion: ";
+	Escribir "1. Alquilar pelicula";
+	Escribir "2. Recibir pelicula";
+	
+	Leer opcion;
+	
+	Segun  opcion	hacer	
+		1: 
+			Escribir "Las peliculas disponibles son: ";
+			
+			Escribir "1. Piratas del caribe";
+			Escribir "2. Animales fantasticos";
+			Escribir "3. Mas alla de la luna";
+			Escribir "4. Monstruos del mar";
+			Escribir "5. Dog un viaje salvaje";
+			
+			leer peli;
+			
+			Escribir "Nombre del usuario";
+			leer NombreUsuario;
+			
+			segun peli hacer
+				1: 
+					Escribir NombreUsuario," Alquilo la pelicula Piratas del carible";
+				2: 
+					Escribir NombreUsuario," Alquilo la pelicula Animales fantasticos";
+				3: 
+					Escribir NombreUsuario," Alquilo la pelicula Mas alla de la luna";
+				4:
+					Escribir NombreUsuario," Alquilo la pelicula Monstruos del mar";
+				5: 
+					Escribir NombreUsuario," Alquilo la pelicula Dog un viaje salvaje";
+				De Otro Modo:
+					Escribir "La opcion no existe";
+			FinSegun
+			
+		2:
+			Escribir "Ingrese el nombre de la pelicula";
+			Leer NombrePeli;
+			
+			Escribir "1. Pelicula en buen estado";
+			Escribir "2. Pelicula en mal estado";
+			Leer estado;
+			si estado = 2 entonces 
+				Escribir "Ingrese el nombre del usuario";
+				Leer NombreUsuario;
+				Escribir "Por favor mencione cual es el estado en que llego la pelicula";
+				Leer EstadoPeli;
+				Escribir "La pelicula", NombrePeli, " presenta las siguientes observaciones: ", EstadoPeli," Por lo tanto se le combra al Usuario ", NombreUsuario," el 10% del alquiler de la pelicula";
+			SiNo
+				Escribir "Gracias por entregar la pelicula en buen estado";
+			FinSi
+		De Otro Modo:
+			Escribir "La opcion es invalida";
+	FinSegun
+FinSubProceso
+
+Proceso Taller_Condicionales
+	Definir opcion Como Entero;
+	
+	Repetir
+		
+	Escribir 'Seleccionar la opcion que desees realizar';
+	Escribir '1. Su Banco Fiel';
+	Escribir '2. Drogueria Mi Salud';
+	Escribir '3. Taller de motos el Maquinista';
+	Escribir '4, Ingreso Fiesta';
+	Escribir '5. Geometria';
+	Escribir '6. Pasteleria';
+	Escribir '7. Salud -> IMC';
+	Escribir '8. Video Tienda';
+	Escribir '9. Salir de la APP';
+	leer opcion;
+
+	si opcion=1 Entonces
+		Banco();
+	FinSi
+	si opcion=2 Entonces
+		Drogueria();
+	FinSi
+	si opcion=3 Entonces
+		Maquinista();
+	FinSi
+	si opcion=4 Entonces
+		Fiesta();
+	FinSi
+	si opcion=5 Entonces
+		Geometria();
+	FinSi
+	si opcion=6 Entonces
+		Pasteleria();
+	FinSi
+	si opcion=7 Entonces
+		IMC_Salud();
+	FinSi
+	si opcion=8 Entonces
+		VideoTienda();
+	FinSi
+	
+Hasta Que  opcion=9
+
+FinProceso

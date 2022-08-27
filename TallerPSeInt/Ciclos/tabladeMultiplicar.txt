@@ -1,0 +1,15 @@
+Proceso Ciclo_4
+	//Tabla de multiplicar
+	
+	Definir f, n, num, mult Como Entero;
+	Escribir "Ingrese el numero de la tabla de multiplicar que desea consultar";
+	leer num;
+	n<-10;
+	f<-1; 
+	Para f<-1 Hasta  n con paso 1 Hacer
+		
+		mult<-f*num;
+		escribir f,' x ',num," = ",mult;
+		
+	FinPara
+FinProceso

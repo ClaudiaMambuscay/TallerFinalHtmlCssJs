@@ -1,0 +1,17 @@
+Proceso Ciclos_1
+	Definir f,c, n Como Entero;
+	n<-10;
+f<-1; c<-1;
+Para f<-1 Hasta  n con paso 1 Hacer
+	para c<-1 hasta f con paso 1 Hacer
+		
+		escribir Sin Saltar '*';
+		
+	FinPara
+	
+	escribir '';
+	
+FinPara
+
+
+FinProceso

@@ -1,0 +1,19 @@
+Proceso TalleOne_One
+	// Punto 1 y 2
+	Definir nombre Como Caracter;
+	Definir apellidos Como Caracter;
+	Definir estatura Como Real;
+	Definir edad Como Entero;
+
+	Escribir 'Ingrese su nombre';
+	Leer nombre;
+	Escribir 'Ingrese sus apellidos';
+	Leer apellidos;
+	Escribir 'Ingrese su edad';
+	leer edad;
+	Escribir 'Ingrese su estatura en metros';
+	leer estatura;
+	
+	Escribir 'Nombre: ', nombre, ' Apellidos: ',apellidos;
+	Escribir 'Edad:', edad,' Estatura: ',estatura;
+FinProceso

@@ -1,0 +1,45 @@
+Proceso DrogueriaMiSalud
+	// punto 5
+	Definir Producto, cliente Como Caracter;
+	Definir opcion, precio, devolucion, M, cantidad Como Entero;
+	
+	Escribir "Ingrese la opcion";
+	Escribir "1. Consultar productos";
+	Escribir "2. Devolucion";
+	Leer opcion;
+	
+	Segun opcion hacer
+		1:
+			Escribir "Los Medicamentos disponibles son: ";
+		    Escribir " 1. Acetaminofen 250mg x10 -> $1.000";
+			Escribir " 2. Naproxeno 250mg x10 -> $3.000";
+			Escribir " 3. Dolex forte  x5 -> $5.000";
+			Escribir " 4. Noxpirin x4 -> $5.200";
+			Leer M;
+			Escribir "Ingrese la cantidad del medicamento seleccionado";
+			Leer cantidad;
+			segun M hacer
+				1: 
+					precio<-cantidad*1000;
+					Escribir "El valor a pagar es", precio;
+				2:
+					precio<-cantidad*3000;
+					Escribir "El valor a pagar es", precio;
+				3:
+					precio<-cantidad*5000;
+					Escribir "El valor a pagar es", precio;
+				4:
+					precio<-cantidad*5200;
+					Escribir "El valor a pagar es", precio;
+				De Otro Modo:
+					Escribir "La opcion no existe";
+			FinSegun
+		2: 
+			Escribir "La devolucion solo se realiza para medicamento equivocado sin destapar";
+		De Otro Modo:
+			Escribir "La opcion no existe";
+		
+	FinSegun
+	
+	
+FinProceso

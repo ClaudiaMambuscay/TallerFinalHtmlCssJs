@@ -1,0 +1,78 @@
+Proceso ElMaquinista
+	
+	Definir nombre, tipo, fecha, observacionCliente, registroNovedad Como Caracter;
+	Definir opcion, opcion2, opcion3 Como Entero;
+	
+	Escribir "Ingrese el nombre del cliente";
+	Leer nombre;
+	Escribir "Ingrese el tipo de motocicleta y la fecha DD/MM/AAAA";
+	Leer tipo, fecha;
+	Escribir "Observaciones del cliente";
+	Leer observacionCliente;
+	
+	Escribir "Seleccione una opcion";
+	Escribir "1. Cambio de aceite";
+	Escribir "2. Revision mecanica general";
+	Leer opcion;
+	
+	segun opcion hacer
+		1:
+			Escribir "Se presenta novedad en el cambio de aceite, si=1, No=0";
+			Leer opcion2;
+			si opcion2 = 1 Entonces
+				Escribir "Ingrese la novedad"	;
+				Leer registroNovedad;
+				Escribir "El cambio de aceite fue exitoso para la motocicleta ",tipo," ingresada el dia ", fecha, " perteneciente al usuario ", nombre,"la cual presento como novedad " , registroNovedad;
+			SiNo
+				Escribir "El cambio de aceite fue exitoso para la motocicleta ",tipo," ingresada el dia ", fecha, " perteneciente al usuario ", nombre;
+			FinSi
+			
+		2: 
+			Escribir "Reporte Valoracion General";
+			Escribir "1. Desgaste en frenos";
+			Escribir "2. Cambio de pintura";
+			Escribir "3. Cambio de luces";
+			Leer opcion2;
+			
+			segun opcion2 hacer
+				1: 
+					Escribir "Se presenta novedad en los frenos, si=1, No=0";
+					Leer opcion3;
+					si opcion2 = 1 Entonces
+						Escribir "Ingrese la novedad"	;
+						Leer registroNovedad;
+						Escribir "El cambio de frenos fue exitoso para la motocicleta ",tipo," ingresada el dia ", fecha, " perteneciente al usuario ", nombre,"la cual presento como novedad " , registroNovedad;
+					SiNo
+						Escribir "El cambio de frenos fue exitoso para la motocicleta ",tipo," ingresada el dia ", fecha, " perteneciente al usuario ", nombre;
+					FinSi
+					
+				2: 
+					Escribir "Se presenta novedad en la pintura, si=1, No=0";
+					Leer opcion3;
+					si opcion2 = 1 Entonces
+						Escribir "Ingrese la novedad"	;
+						Leer registroNovedad;
+						Escribir "El cambio de pintura fue exitoso para la motocicleta ",tipo," ingresada el dia ", fecha, " perteneciente al usuario ", nombre,"la cual presento como novedad " , registroNovedad;
+					SiNo
+						Escribir "El cambio de pintura fue exitoso para la motocicleta ",tipo," ingresada el dia ", fecha, " perteneciente al usuario ", nombre;
+					FinSi
+					
+				3:
+					Escribir "Se presenta novedad en las luces, si=1, No=0";
+					Leer opcion3;
+					si opcion2 = 1 Entonces
+						Escribir "Ingrese la novedad"	;
+						Leer registroNovedad;
+						Escribir "El cambio de luces fue exitoso para la motocicleta ",tipo," ingresada el dia ", fecha, " perteneciente al usuario ", nombre,"la cual presento como novedad " , registroNovedad;
+					SiNo
+						Escribir "El cambio de luces fue exitoso para la motocicleta ",tipo," ingresada el dia ", fecha, " perteneciente al usuario ", nombre;
+					FinSi
+				De Otro Modo:
+					Escribir "La opcion es invalida";
+			FinSegun
+		De Otro Modo:
+			Escribir "La opcion es invalida";
+	FinSegun
+	
+	
+FinProceso

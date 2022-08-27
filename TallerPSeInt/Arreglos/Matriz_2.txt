@@ -1,0 +1,25 @@
+Proceso Matriz_2
+	Definir matriz, num, f, c Como Entero;
+	
+	Dimension matriz[10,10];
+	
+	Escribir 'Columnas: 0, 1, 2, 3, 4, 5 ,6 ,7 ,8 ,9', ' Filas:';
+	Escribir '__________________________________________________';
+
+	Para f<-0 hasta 9 con paso 1 Hacer
+		
+		para c<-0 Hasta 9 Con Paso 1 Hacer
+			
+			matriz[f,c]<-(f+1)*(c+1);
+			//Escribir matriz[f,c], ' ', Sin Saltar;
+			Escribir ' ',c+1,'x',f+1, ' ',Sin Saltar;
+		FinPara
+		
+		Escribir  ' |', f;
+		
+	FinPara
+	
+	Escribir 'Ingrese la fila y la columna que desee conocer su resultado';
+	leer f,c;
+	Escribir f,'x',c,'=',matriz[f-1,c-1];
+FinProceso

@@ -1,0 +1,32 @@
+Proceso TallerOne_Two
+	// Punto 3
+	Definir SuNombre, SuApellido Como Caracter;
+	Definir NombrePAdre, ApellidoPadre Como Caracter;
+	Definir NombreMadre, ApellidoMadre Como Caracter;
+	
+	Escribir 'Ingrese su nombre';
+	Leer SuNombre;
+	Escribir 'Ingrese su apellido';
+	Leer SuApellido;
+	Escribir 'Ingrese el Nombre de su Padre';
+	Leer NombrePadre;
+	Escribir 'Ingrese el Apellido de su Padre';
+	Leer ApellidoPadre;
+	Escribir 'Ingrese el Nombre de su Madre';
+	Leer NombreMadre;
+	Escribir 'Ingrese el Apellido de su Madre';
+	Leer ApellidoMadre;
+	
+	Escribir 'Yo, ',SuNombre,' ',SuApellido,', soy hij@ de: ';
+	Escribir NombreMadre,' ',ApellidoMadre,' y ',NombrePadre,' ',ApellidoPadre;
+	
+	
+	// Punto 4
+	Definir Capital, Pais Como Caracter;
+	
+	Escribir 'Ingrese el nombre de la Capital y el Pais';
+	Leer Capital;
+	Leer Pais;
+	Escribir 'La ciudad ', Capital,'es la capital del pais ', Pais;
+	
+FinProceso

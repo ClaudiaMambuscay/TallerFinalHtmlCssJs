@@ -1,0 +1,69 @@
+Proceso Ciclo_7
+	definir nombre, placa, marca, registro Como Caracter;
+	definir telefono, opcion, count Como Entero;
+	
+	dimension registro[5,5];
+	Repetir
+		escribir 'Ingrese una opcion';
+		Escribir '1. Ingresar al parqueadero';
+		Escribir '2. Buscar vehiculo';
+		Escribir '3. Retirar vehiculo del parqueader';
+		Escribir '4. Salir de la APP';
+		
+		Leer opcion;
+		
+		si opcion =1 Entonces
+			Para count<-1 Hasta 5 Con Paso 1 Hacer
+				Escribir 'Parqueaderos disponibles:',5-(count-1);
+				Escribir 'Ingrese Nombre y Apellido del usuario';
+				Leer nombre;
+				Escribir 'Ingrese el numero telefonico';
+				Leer telefono;
+				Escribir 'Ingrese la marca del carro';
+				leer marca;
+				Escribir 'Ingrese la placa del carro';
+				leer placa;
+				
+				registro[count-1,0]<-nombre;
+				registro[count-1,1]<-ConvertirATexto(telefono);
+				registro[count-1,2]<- marca;
+				registro[count-1,3]<- placa;
+				registro[count-1,4]<- ConvertirATexto(count-1);
+				escribir 'El usuario ', nombre,' con carro de marca: ',marca, ' y placas ', placa, ' se ha registrado correctamente';
+			FinPara
+		FinSi
+		
+		si opcion=2 Entonces
+			Escribir 'Ingrese la placa';
+			leer placa;
+			
+			Para count<-1 Hasta 5 Con Paso 1 Hacer
+				si placa=registro[count-1,3] Entonces
+					
+					Escribir 'El usuario ',registro[count-1,0] , ' con carro de marca ', registro[count-1,2],' y placas ' , registro[count-1,3],' se encuentra en el parqueadero No:',registro[count-1,4] ;
+				SiNo
+					Escribir 'El carro no se encuentra registrado en el parqueadero';
+				FinSi
+				
+			FinPara
+		FinSi
+		
+		si opcion=3 Entonces
+			Escribir 'Ingrese la placa del vehiculo';
+			leer placa;
+			
+			Para count<-1 Hasta 5 Con Paso 1 Hacer
+				si placa=registro[count-1,3] Entonces
+					registro[count-1,0]<-' ';
+					registro[count-1,1]<-' ';
+					registro[count-1,2]<-' ';
+					registro[count-1,3]<-' ';
+					registro[count-1,4]<-' ';
+					Escribir 'El vehiculo de placas ', placa, ' se ha retirado del parqueadero';
+				FinSi
+				
+			FinPara
+		FinSi
+	
+	Hasta Que opcion=4
+FinProceso

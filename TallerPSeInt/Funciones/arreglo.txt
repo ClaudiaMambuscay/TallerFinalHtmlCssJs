@@ -1,0 +1,200 @@
+SubProceso Matriz_2(  )
+	Definir matriz, num, f, c Como Entero;
+	
+	Dimension matriz[10,10];
+	
+	Escribir 'Columnas: 0, 1, 2, 3, 4, 5 ,6 ,7 ,8 ,9', ' Filas:';
+	Escribir '__________________________________________________';
+	
+	Para f<-0 hasta 9 con paso 1 Hacer
+		
+		para c<-0 Hasta 9 Con Paso 1 Hacer
+			
+			matriz[f,c]<-(f+1)*(c+1);
+			//Escribir matriz[f,c], ' ', Sin Saltar;
+			Escribir ' ',c+1,'x',f+1, ' ',Sin Saltar;
+		FinPara
+		
+		Escribir  ' |', f;
+		
+	FinPara
+	
+	Escribir 'Ingrese la fila y la columna que desee conocer su resultado';
+	leer f,c;
+	Escribir f,'x',c,'=',matriz[f-1,c-1];
+FinSubProceso
+
+SubProceso Matriz_1(  )
+	definir num, f, c Como Entero;
+	definir m,a Como Caracter;
+	
+	Dimension m[4,5];
+	Dimension a[2,5];
+	num<-0;
+	
+	Escribir 'Matriz inicial';
+	para f<-0 Hasta 3 Con Paso 1 Hacer
+		para c<-0 Hasta 4 con paso 1 Hacer
+			si num<10 Entonces
+				num<-num+1;
+				m[f,c]<-concatenar('0',ConvertirATexto(num));
+				
+			FinSi
+			
+			si num>=10 Entonces
+				m[f,c]<-ConvertirATexto(num);
+				num<-num+1;
+			FinSi
+			Escribir m[f,c] ,' ',Sin Saltar;
+			
+		FinPara
+		
+		escribir ' ';
+	FinPara
+	
+	Para f<-0 hasta 3 Con Paso 1 Hacer
+		para c<-0 Hasta 4 con paso 1 Hacer
+			si f=1 o f=3 Entonces
+				a[0,c]<-m[1,4-c];
+				a[1,c]<-m[3,4-c];
+				//Escribir a[0,c] sin saltar;
+			FinSi
+			
+		FinPara
+		//escribir ' ';
+	FinPara
+	escribir ' ';
+	Escribir 'Matriz final';
+	Para f<-0 hasta 3 Con Paso 1 Hacer
+		para c<-0 Hasta 4 con paso 1 Hacer
+			m[1,c]<-a[0,c];
+			m[3,c]<-a[1,c];
+			Escribir m[f,c] ,' ',Sin Saltar;
+			
+		FinPara
+		escribir ' ';
+	FinPara
+FinSubProceso
+
+SubProceso primo (  )
+	Definir num, cont, arreglo, j, i Como Entero;
+	
+	Dimension arreglo[1000];
+	
+	Para j<-0 Hasta 999	Con Paso 1	Hacer
+		arreglo[j]<-j+1; // numeros del 1 al 1000
+		//Escribir arreglo[j];
+	FinPara
+	
+	Para j<-0 Hasta 999 Con Paso 1 Hacer
+		
+		i<-1;
+		cont<-0;
+		
+		Mientras i<=j+1 Hacer
+			num<-arreglo[j] mod i;
+			//Escribir arreglo[j], ' %',i,' =',num;
+			si num=0 Entonces // cuenta las veces en que el modulo del numero es cero
+				cont<-cont+1;
+			FinSi
+			i<-i+1;
+		FinMientras
+		
+		si cont=2 Entonces
+			Escribir arreglo[j];
+		FinSi
+		
+	FinPara
+FinSubProceso
+
+SubProceso ParImpar (  )
+	Definir Par, Impar, j, num, arreglo, cp,ci Como Entero;
+	Dimension arreglo[20];
+	
+	cp<-0; ci<-0;
+	Para j<-0 Hasta 19 Con Paso 1 Hacer
+		arreglo[j]<-Aleatorio(1,100);
+		//Escribir arreglo[j];
+		num<-arreglo[j]%2;
+		
+		si  num=0 Entonces
+			cp<-cp+1;
+		FinSi
+		
+		si num <>0 Entonces
+			ci<-ci+1;
+		FinSi
+	FinPara
+	
+	
+	Escribir'Pares: ';
+	Para j<-0 hasta 19 Con Paso 1 Hacer
+		num<-arreglo[j]%2;
+		
+		si  num=0 Entonces
+			Par<-arreglo[j];
+			//Escribir 'Pares:';
+			Escribir arreglo[j],' ', sin saltar;
+		FinSi
+	FinPara
+	
+	Escribir' ';
+	
+	Escribir'Impares: ';
+	Para j<-0 hasta 19 Con Paso 1 Hacer
+		num<-arreglo[j]%2;
+		si num <>0 Entonces
+			Impar<-arreglo[j];
+			Escribir arreglo[j],' ',sin saltar;
+		FinSi
+	FinPara
+	
+	
+FinSubProceso
+
+SubProceso vector(  )
+	Definir num, vector, j Como Entero;
+	Dimension vector[5];
+	
+	Para j<-0 Hasta 4 Con Paso 1 Hacer
+		Escribir 'Ingresar el valor del vector en la posicion: ',j; 
+		leer num;
+		vector[j]<-num;
+	FinPara
+	
+	Para j<-0 Hasta 4 Con Paso 1 Hacer
+		Escribir '[',j,']',' = ',vector[j]; 
+	FinPara
+FinSubProceso
+
+Proceso arreglos
+	Definir opcion Como Entero;
+	
+	Repetir
+		Escribir'Seleccione la opcion que desee ver';
+		Escribir '1. Vector';
+		Escribir '2. Numero Par o Impar';
+		Escribir '3. Numero primo';
+		Escribir '4. Matriz 1';
+		Escribir '5. Matriz 2';
+		Escribir '6. Salir de la APP';
+		Leer opcion;
+		
+		si opcion = 1 Entonces
+			vector();
+		FinSi
+		si opcion = 2 Entonces
+			ParImpar();
+		FinSi
+		si opcion =3 Entonces
+			primo();
+		FinSi
+		si opcion =4 Entonces
+			Matriz_1();
+		FinSi
+		si opcion =5 Entonces
+			Matriz_2();
+		FinSi
+	Hasta Que opcion=6
+	
+FinProceso

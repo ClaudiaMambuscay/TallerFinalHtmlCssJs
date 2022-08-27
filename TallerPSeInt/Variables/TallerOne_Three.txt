@@ -1,0 +1,19 @@
+Proceso TallerOne_Three
+	// Punto 5
+	Definir NombreMascota, Tipo, NombrePropietario Como Caracter;
+	Definir EdadMascota Como Entero;
+	
+	Escribir 'Ingrese Su Nombre';
+	Leer NombrePropietario;
+	Escribir 'Ingrese el nombre de su mascota';
+	Leer NombreMascota;
+	Escribir 'Tipo de mascota';
+	Leer Tipo;
+	Escribir 'Edad de su mascota';
+	Leer EdadMascota;
+	
+	Limpiar Pantalla;
+	
+	Escribir NombreMascota, ' es un ', Tipo, ', el cual tiene ', EdadMascota, ' años de edad y ', NombrePropietario, ' es actualmente su dueño(a)' ;
+	
+FinProceso

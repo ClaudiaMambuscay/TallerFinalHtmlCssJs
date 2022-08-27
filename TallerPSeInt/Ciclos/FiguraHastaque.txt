@@ -1,0 +1,46 @@
+Proceso Ciclo_3
+	Definir f,c,a,n,k,b Como Entero;
+	n<-20;
+	f<-0; c<-1;a<-0; k<-1;
+	
+	Repetir
+		c<-n-f;
+		a<-n+c;
+		
+		Repetir
+			escribir Sin Saltar ' ';
+			a<-a-2;
+		Hasta Que  a>0 y a<n
+		
+		Repetir
+			escribir Sin Saltar '*';
+			c<-c+1;
+		Hasta Que  c>n
+		escribir ' ';
+		f<-f+2;
+
+		
+	Hasta Que f=n 
+	
+	b<-n/2;f<-2; c<-1;a<-0; k<-1;
+	Repetir
+		c<-n-f;
+		a<-n+c;
+		
+		Repetir
+			escribir Sin Saltar ' ';
+			a<-a-2;
+		Hasta Que  a>0 y a<n
+		
+		Repetir
+			escribir Sin Saltar '*';
+			c<-c+1;
+		Hasta Que  c>n
+		escribir ' ';
+		f<-f+2;
+		
+		
+	Hasta Que f=b
+	
+
+FinProceso

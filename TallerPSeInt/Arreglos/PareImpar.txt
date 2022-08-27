@@ -1,0 +1,44 @@
+Proceso PareseImpares
+	Definir Par, Impar, j, num, arreglo, cp,ci Como Entero;
+	Dimension arreglo[20];
+	
+	cp<-0; ci<-0;
+	Para j<-0 Hasta 19 Con Paso 1 Hacer
+		arreglo[j]<-Aleatorio(1,100);
+		//Escribir arreglo[j];
+		num<-arreglo[j]%2;
+		
+		si  num=0 Entonces
+			cp<-cp+1;
+		FinSi
+		
+		si num <>0 Entonces
+			ci<-ci+1;
+		FinSi
+	FinPara
+	
+	
+	Escribir'Pares: ';
+	Para j<-0 hasta 19 Con Paso 1 Hacer
+		num<-arreglo[j]%2;
+		
+		si  num=0 Entonces
+			Par<-arreglo[j];
+			//Escribir 'Pares:';
+			Escribir arreglo[j],' ', sin saltar;
+		FinSi
+	FinPara
+	
+	Escribir' ';
+	
+	Escribir'Impares: ';
+	Para j<-0 hasta 19 Con Paso 1 Hacer
+		num<-arreglo[j]%2;
+		si num <>0 Entonces
+			Impar<-arreglo[j];
+			Escribir arreglo[j],' ',sin saltar;
+		FinSi
+	FinPara
+	
+	
+FinProceso

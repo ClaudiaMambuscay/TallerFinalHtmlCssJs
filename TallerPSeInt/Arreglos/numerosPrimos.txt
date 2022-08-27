@@ -1,0 +1,33 @@
+Proceso numPrimo
+	Definir num, cont, arreglo, j, i Como Entero;
+	
+	Dimension arreglo[1000];
+	
+	Para j<-0 Hasta 999	Con Paso 1	Hacer
+		arreglo[j]<-j+1; // numeros del 1 al 1000
+		//Escribir arreglo[j];
+	FinPara
+	
+	Para j<-0 Hasta 999 Con Paso 1 Hacer
+		
+		i<-1;
+		cont<-0;
+		
+		Mientras i<=j+1 Hacer
+			num<-arreglo[j] mod i;
+			//Escribir arreglo[j], ' %',i,' =',num;
+			si num=0 Entonces // cuenta las veces en que el modulo del numero es cero
+				cont<-cont+1;
+			FinSi
+			i<-i+1;
+		FinMientras
+		
+		si cont=2 Entonces
+			Escribir arreglo[j];
+		FinSi
+		
+	FinPara
+	
+	
+	
+FinProceso

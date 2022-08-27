@@ -1,0 +1,44 @@
+Proceso geometria
+	//El profesor de geometría está explicando a sus estudiantes las fórmulas para calcular el área de diferentes figuras geométricas,
+	//para ello requiere una aplicación que le facilite el ejercicio solicitándole los valores al estudiante. La aplicación debe permitir 
+	//que el estudiante seleccione si desea calcular el área de un rectángulo, triángulo o trapecio. No olvide solicitar los datos necesarios 
+	//para realizar cada cálculo y mostrar su respectivo resultado
+	
+	definir AreaRectangulo, AreaTriangulo, AreaTrapecio, L, B, H como real;
+	definir opcion1 como entero;
+	
+	Escribir "Calculo Area: Seleccione La figura geometrica";
+	Escribir"1.Rectangulo";
+	Escribir"2.Triangulo";
+	Escribir"3.Trapecio";
+	Leer opcion1;
+		
+	Segun opcion1 Hacer
+		1:
+			Escribir"Ingrese la longitud del ALTURA en cm";
+			leer H;
+			Escribir "Ingrese la longitud de la BASE en cm";
+			Leer B;
+			AreaRectangulo<-(B*H);
+			Escribir"El area del Rectangulo con base (cm): ", B," y altura (cm): ",H," es: ", AreaRectangulo, "(cm)^2";
+		2:
+			Escribir"Ingrese la longitud del ALTURA en cm";
+			leer H;
+			Escribir "Ingrese la longitud de la BASE en cm";
+			Leer B;
+			AreaTriangulo<-((B*H)/2);
+			Escribir"El area del Triangulo con base (cm): ", B," y altura (cm): ",H," es: ", AreaTriangulo, "(cm)^2";
+		3:
+			Escribir"Ingrese la longitud del ALTURA en cm";
+			leer H;
+			Escribir "Ingrese la longitud de la BASE MAYOR en cm";
+			Leer B;
+			Escribir "Ingrese la longitud de la BASE MENOR en cm";
+			Leer L;
+			AreaTrapecio<-((B+L)/2)*H;
+			Escribir"El area del Trapecio con base mayor (cm): ", B,", base menor (cm): ",L," y altura (cm): ",H," es: ", AreaTrapecio, "(cm)^2";
+			
+		De Otro Modo:
+			Escribir "La opcion NO es Valida";
+	FinSegun
+FinProceso

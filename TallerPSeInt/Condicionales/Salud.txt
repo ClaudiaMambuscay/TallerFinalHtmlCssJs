@@ -1,0 +1,45 @@
+
+Proceso Salud
+	//La Secretaría de Salud Municipal requiere de una aplicación que le permita calcular el IMC (Índice de masa corporal) 
+	//y requiere los datos peso en kilogramos y estatura en metros Para cada persona encuestada adicional a los datos suministrados, 
+	//debe mostrar el resultado para cada uno y establecer en qué rango se encuentra (bajo peso, normal, sobrepeso y obeso).
+	definir personas, nombre como caracter;
+	definir j, k Como Entero;
+	definir Kg, m, imc como real;
+
+	Dimension personas[3,5];
+	Para j<-1 Hasta k Con Paso 1 Hacer
+		
+		Escribir "Ingrese el nombre de la persona",j;
+		leer nombre;
+		personas[j-1,0]<-nombre;
+		Escribir "Ingrese el peso en Kg y la estatura en m de la persona",j;
+		leer personas[j-1,1], personas[j-1,2];		
+		
+		Kg<-ConvertirAnumero(personas[j-1,1]);
+		m<-ConvertirANumero(personas[j-1,2]);
+		imc<- Kg/(m*m);
+		
+		si imc<18.5 Entonces
+			personas[j-1,3]<-ConvertirATexto(imc);
+			personas[j-1,4]<- "Bajo Peso";
+		FinSi
+		si imc=18.5 o imc<24.9 Entonces
+			personas[j-1,3]<-ConvertirATexto(imc);
+			personas[j-1,4]<- "Normal";
+		FinSi
+		si imc=24.9 o imc<29.9 Entonces
+			personas[j-1,3]<-ConvertirATexto(imc);
+			personas[j-1,4]<- "Sobrepeso";
+		SiNo		
+			personas[j-1,3]<-ConvertirATexto(imc);
+			personas[j-1,4]<- "Obeso";
+		FinSi
+	FinPara
+	
+	para j<-1 Hasta 3 Hacer
+		Escribir "Resultados:";
+		Escribir "Nombre:	Peso:	Estatura:	IMC:	Rango:";
+		Escribir personas[j-1,0],' ', personas[j-1,1],' ', personas[j-1,2],' ', personas[j-1,3],' ', personas[j-1,4];
+	FinPara
+FinProceso
